@@ -9,12 +9,12 @@ class OpenSSL::MemBIO < IO
     initialize LibCrypto.bio_new(LibCrypto.bio_s_mem)
   end
 
-  def read(data : Slice(UInt8))
-    LibCrypto.bio_read(self, data, data.size)
+  def read(slice : Slice(UInt8))
+    LibCrypto.bio_read(self, slice, slice.size)
   end
 
-  def write(data : Slice(UInt8))
-    LibCrypto.bio_write(self, data, data.size)
+  def write(slice : Slice(UInt8)) : Nil
+    LibCrypto.bio_write(self, slice, slice.size)
   end
 
   def reset

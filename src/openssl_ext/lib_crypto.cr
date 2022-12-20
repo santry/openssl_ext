@@ -367,7 +367,8 @@ lib LibCrypto
   fun evp_sign_final = EVP_SignFinal(ctx : EVP_MD_CTX, md : UInt8*, s : LibC::UInt*, pkey : EvpPKey*) : LibC::Int
   fun evp_verify_final = EVP_VerifyFinal(ctx : EVP_MD_CTX, sigbuf : UInt8*, siglen : LibC::UInt, pkey : EvpPKey*) : LibC::Int
 
-  fun x509_digest = X509_digest(x509 : X509, type : EVP_MD, md : UInt8*, len : UInt32*) : Int32
+  fun x509_digest = X509_digest(x509 : X509, evp_md : EVP_MD, hash : ::Pointer(UInt8), len : ::Pointer(Int32)) : Int32
+#  fun x509_digest = X509_digest(x509 : X509, type : EVP_MD, md : UInt8*, len : UInt32*) : Int32
   fun x509_get0_tbs_sigalg = X509_get0_tbs_sigalg(x509 : X509) : X509_ALGOR
   fun x509_get_issuer_name = X509_get_issuer_name(x509 : X509) : X509_NAME
   fun x509_get_public_key = X509_get_pubkey(x509 : X509) : EvpPKey*
