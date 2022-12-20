@@ -13,6 +13,7 @@ module OpenSSL::PKey
     def self.new(io : IO, passphrase = nil)
       content = Bytes.new(io.size)
       io.read(content)
+			puts content
       io.rewind
 
       priv = true
